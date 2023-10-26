@@ -36,9 +36,10 @@ function MyDocumentsMain() {
                             <div className='rounded-full bg-yellow-500 p-2 hover:bg-yellow-600 transition duration-200' onClick={() => openPdfInNewTab(elem.name)}>
                                 <BsEyeFill />
                             </div>
-                            <div className='rounded-full p-2 bg-red-500 hover:bg-red-600 transition duration-200'>
+                            {/* planning to implement document delete feature in future */}
+                            {/* <div className='rounded-full p-2 bg-red-500 hover:bg-red-600 transition duration-200'>
                                 <BsTrashFill />
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 ))}
