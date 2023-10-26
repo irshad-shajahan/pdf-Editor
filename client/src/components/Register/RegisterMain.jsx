@@ -6,6 +6,9 @@ import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { hideLoading, showloading } from '../../redux/features/alertSlice';
+import { toast } from 'react-toastify';
+import { validateEmail, validateName, validatePassword } from '../validations/validate';
+
 
 function RegisterMain() {
   const dispatch = useDispatch()
@@ -16,9 +19,38 @@ function RegisterMain() {
     confirmPassword: '',
   });
   const navigate = useNavigate()
+  function validateForm(formData) {
+    if (!formData.name) {
+        toast.error('Name is required')
+        return false
+      } else if (!validateName(formData.name)) {
+        toast.error('Enter a valid Name')
+        return false
+      }
+
+    if (!formData.email) {
+      toast.error('Email is required')
+      return false
+    } else if (!validateEmail(formData.email)) {
+      toast.error('Please enter a valid email address')
+      return false
+    }
+    if(!formData.password){
+      toast.error('enter password')
+      return false
+    }else if(validatePassword(formData.password)){
+      toast.error(validatePassword(formData.password))
+      return false
+    }
+
+    return true;
+}
   const handleFormSubmit = async (e) => {
-    dispatch(showloading())
     e.preventDefault();
+    if(!validateForm(formData)){
+      return
+    }
+    dispatch(showloading())
     try {
       // Send the form data to the server
       const { name, email, password } = formData;
@@ -79,15 +111,6 @@ function RegisterMain() {
           name='password'
           className='border-gray-400 rounded-lg border w-[90%] my-2 h-12 pl-5'
           value={formData.password}
-          onChange={handleInputChange}
-        />
-        <p className='text-left w-[90%] font-semibold text-lg mt-4'>Confirm Password</p>
-        <input
-          type='password'
-          placeholder='Confirm Password'
-          name='confirmPassword'
-          className='border-gray-400 rounded-lg border w-[90%] my-2 h-12 pl-5'
-          value={formData.confirmPassword}
           onChange={handleInputChange}
         />
         <button type='submit' className='bg-[#2C666E] text-white font-semibold px-5 py-1 rounded-lg text-lg mt-3'>

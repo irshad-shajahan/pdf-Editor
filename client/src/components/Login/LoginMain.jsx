@@ -16,12 +16,17 @@ function LoginMain() {
   });
 
   const handleFormSubmit = async (e) => {
-    dispatch(showloading())
     e.preventDefault();
+    if(!formData.email || !formData.password){
+      toast.error('Fill in all fields')
+      return
+    }
+    dispatch(showloading())
     if(isLoading){
       return
     }
     try {
+     
      const response = await login(formData)
       console.log(response);
       if (response?.data.success) {
@@ -56,7 +61,7 @@ function LoginMain() {
         </div>
         <p className='text-left w-[90%] font-semibold text-lg'>Email</p>
         <input
-          type='text'
+          type='email'
           name='email'
           placeholder='Email'
           className='border-gray-400 rounded-lg border w-[90%] my-2 h-12 pl-5'

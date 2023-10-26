@@ -1,11 +1,12 @@
 import React from 'react'
-import { BsEyeFill, BsTrashFill } from 'react-icons/bs'
+import { BsEyeFill } from 'react-icons/bs'
 import { useGetUserDetailsQuery } from '../../redux/features/api/apiSlice'
 
+const baseURL=import.meta.env.MODE==='development'?"http://localhost:5000/api":"https://pdf.medoncall.online/api"
 function MyDocumentsMain() {
     const { data, isLoading, isSuccess } = useGetUserDetailsQuery()
     const openPdfInNewTab = (fileName) => {
-        const pdfUrl = `https://pdf.medoncall.online/api/generatedpdf/${fileName}`;
+        const pdfUrl = `${baseURL}/generatedpdf/${fileName}`;
         window.open(pdfUrl, '_blank');
     }
     const documentName = (name) => {

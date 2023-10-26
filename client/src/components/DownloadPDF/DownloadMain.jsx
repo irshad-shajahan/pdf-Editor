@@ -5,12 +5,13 @@ import { useLocation } from 'react-router-dom';
 import {BsEyeFill} from 'react-icons/bs'
 // import { saveAs } from 'file-saver';
 // import axios from '../../axios/axios';
+const baseURL=import.meta.env.MODE==='development'?"http://localhost:5000/api":"https://pdf.medoncall.online/api"
 
 function DownloadMain() {
     const location = useLocation()
     const fileName = location.state
     const openPdfInNewTab = () => {
-        const pdfUrl = `https://pdf.medoncall.online/api/generatedpdf/${fileName}`;
+        const pdfUrl = `${baseURL}/generatedpdf/${fileName}`;
         window.open(pdfUrl, '_blank');
       };
     //   const downloadPdf =() =>{
