@@ -76,7 +76,7 @@ export const processPdf = async (req, res) => {
       pdfDoc.addPage(e);
     });
     const pdfBytes = await pdfDoc.save();
-    const saveDirectory = "./generatedpdf";
+    const saveDirectory = "./public/generatedpdf";
     const randomString = Math.random().toString(36).substring(2); // Generate a random string
     const fileName = fileOriginalName + "&--&" + randomString + ".pdf";
    if(userId){

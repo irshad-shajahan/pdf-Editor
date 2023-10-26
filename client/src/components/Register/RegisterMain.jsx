@@ -50,7 +50,7 @@ function RegisterMain() {
 
   return (
     <div className='h-screen flex justify-center items-center' style={{ backgroundImage: `url(${bgImage})`, backgroundRepeat: 'repeat', backgroundSize: 'cover' }}>
-      <form className='flex flex-col justify-start items-center rounded-xl border-gray-200 border-[2px] shadow-lg w-[90%] lgw-[30%] bg-white pb-5' onSubmit={handleFormSubmit}>
+      <form className='flex flex-col justify-start items-center rounded-xl border-gray-200 border-[2px] shadow-lg w-[90%] lg:w-[30%] bg-white pb-5' onSubmit={handleFormSubmit}>
         <div className='bg-[#2C666E] rounded-t-xl w-full pt-5 pb-2 mb-5'>
           <h1 className='text-white font-bold text-center text-2xl'>USER REGISTER</h1>
         </div>

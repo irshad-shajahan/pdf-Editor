@@ -10,7 +10,7 @@ function DownloadMain() {
     const location = useLocation()
     const fileName = location.state
     const openPdfInNewTab = () => {
-        const pdfUrl = `http://localhost:5000/generatedpdf/${fileName}`;
+        const pdfUrl = `https://pdf.medoncall.online/api/generatedpdf/${fileName}`;
         window.open(pdfUrl, '_blank');
       };
     //   const downloadPdf =() =>{

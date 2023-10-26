@@ -26,7 +26,7 @@ app.use("/api", express.static("public"));
 // cors
 app.use(
   cors({
-    origin: ["http://localhost:3000"],
+    origin: ["http://localhost:3000","https://pdf.medoncall.online"],
     credentials: true,
   })
 );
@@ -34,7 +34,7 @@ app.use(
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-app.use("/generatedpdf", express.static(path.join(__dirname, "generatedpdf")));
+// app.use("/generatedpdf", express.static(path.join(__dirname, "generatedpdf")));
 
 const port = process.env.PORT || 5000;
 //listen port

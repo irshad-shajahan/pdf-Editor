@@ -5,7 +5,7 @@ import { useGetUserDetailsQuery } from '../../redux/features/api/apiSlice'
 function MyDocumentsMain() {
     const { data, isLoading, isSuccess } = useGetUserDetailsQuery()
     const openPdfInNewTab = (fileName) => {
-        const pdfUrl = `http://localhost:5000/generatedpdf/${fileName}`;
+        const pdfUrl = `https://pdf.medoncall.online/api/generatedpdf/${fileName}`;
         window.open(pdfUrl, '_blank');
     }
     const documentName = (name) => {
