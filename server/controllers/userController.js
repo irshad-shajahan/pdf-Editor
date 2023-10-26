@@ -37,7 +37,6 @@ export const login = async (req, res) => {
   const data = req.body;
   try {
     const user = await userModel.findOne({ email: data.email });
-    console.log(user);
     if (user) {
       const isMatch = await bcrypt.compare(data.password, user.password);
       if (!isMatch) {
@@ -53,6 +52,10 @@ export const login = async (req, res) => {
         success: true,
         token,
       });
+    }else{
+      return res
+          .status(200)
+          .send({ message: `Invalid Email or Password`, success: false });
     }
   } catch (error) {
     console.log(error);

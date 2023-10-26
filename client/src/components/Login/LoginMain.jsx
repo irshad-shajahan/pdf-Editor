@@ -26,16 +26,14 @@ function LoginMain() {
       return
     }
     try {
-     
      const response = await login(formData)
-      console.log(response);
       if (response?.data.success) {
         toast.success('Login succesful')
         dispatch(hideLoading())
         localStorage.setItem("token", response.data.token)
         navigate('/')
       } else {
-        toast.error('error occurred')
+        toast.error(response.data.message)
         dispatch(hideLoading())
       }
     } catch (error) {
