@@ -14,7 +14,7 @@ function Navbar() {
   const dispatch = useDispatch()
   const navigate = useNavigate() 
   const pdfSelected = useSelector((state)=>state.pdf.file)
-  const token = localStorage.getItem('token')
+  const token = localStorage.getItem('token') 
   const location = useLocation()
   const path = location.pathname
   const {data,isSuccess,isLoading} = useGetUserDetailsQuery()
