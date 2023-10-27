@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { hideLoading, showloading } from '../../redux/features/alertSlice';
 import { toast } from 'react-toastify';
 import { useUserLoginMutation } from '../../redux/features/api/apiSlice';
+import { setPdf } from '../../redux/features/pdfSlice';
 
 function LoginMain() {
   const navigate = useNavigate()
@@ -28,6 +29,7 @@ function LoginMain() {
     try {
      const response = await login(formData)
       if (response?.data.success) {
+        dispatch(setPdf(null))
         toast.success('Login succesful')
         dispatch(hideLoading())
         localStorage.setItem("token", response.data.token)

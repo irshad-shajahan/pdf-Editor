@@ -1,6 +1,8 @@
 import JWT from 'jsonwebtoken';
 import validator from 'validator';
 
+
+//authentication middleware to validate jwt
 const authenticateMiddleware = async (req, res, next) => {
     try {
         const token = req.headers['authorization'].split(" ")[1];

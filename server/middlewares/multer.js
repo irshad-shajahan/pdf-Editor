@@ -1,14 +1,6 @@
 import multer from "multer";
 
-// let storage = multer.diskStorage({
-//         destination:function(req,file,cb){
-//             cb(null,'uploads/')
-//         },
-//         filename:function(req, file, cb){
-//             cb(null, Date.now()+'-'+file.originalname)
-//         }
-//     })
-
+//multer configuration file to handle file uploads
 const storage = multer.memoryStorage();
 
 let upload = multer({ storage: storage });

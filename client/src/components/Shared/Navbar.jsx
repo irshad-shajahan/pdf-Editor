@@ -3,13 +3,15 @@ import { Tooltip } from "@nextui-org/tooltip";
 import { FaUserAlt } from 'react-icons/fa'
 import { ImInfo } from 'react-icons/im'
 import {RiLogoutCircleRFill} from 'react-icons/ri'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useGetUserDetailsQuery } from '../../redux/features/api/apiSlice';
 import Swal from 'sweetalert2';
 import { toast } from 'react-toastify';
+import { setPdf } from '../../redux/features/pdfSlice';
 
 function Navbar() {
+  const dispatch = useDispatch()
   const navigate = useNavigate() 
   const pdfSelected = useSelector((state)=>state.pdf.file)
   const token = localStorage.getItem('token')
@@ -27,6 +29,7 @@ function Navbar() {
       confirmButtonText: 'Logout'
     }).then((result) => {
       if (result.isConfirmed) {
+        dispatch(setPdf(null))
         localStorage.removeItem('token')
         navigate('/')
         toast.success('logout successful')
